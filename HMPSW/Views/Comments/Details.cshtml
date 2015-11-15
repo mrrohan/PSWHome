@@ -1,0 +1,42 @@
+﻿@model HMPSW.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Person)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Person)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Post)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Post)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment_text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment_text)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,34 @@
+﻿@model HMPSW.Models.Follow
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Follow</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Followed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Followed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Follower)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Follower)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
