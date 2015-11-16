@@ -3,78 +3,80 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div class="container">
+    <h2>Delete</h2>
 
-<h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Person_ID)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Person_ID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Person_ID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Person_ID)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tag)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tag)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tag)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tag)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rep_plus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Rep_plus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Rep_plus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rep_plus)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Rep_minus)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Rep_minus)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Rep_minus)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rep_minus)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
 </div>
