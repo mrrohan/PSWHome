@@ -82,16 +82,32 @@
             </dd>
         </dl>
     </div>
-    </div>
-    <div class="container">
-        <h2>Create post</h2>
-        <div>
-            <p></p>
-            <h4>Publish a new article</h4>
-            <p>
-                <dd>
-                    @Html.ActionLink("Post", "Create", "Posts")
-                </dd>
-            </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Create post</h2>
+            <div>
+                <p></p>
+                <h4>Publish a new article</h4>
+                <p>
+                    <dd>
+                        @Html.ActionLink("Post", "Create", "Posts")
+                    </dd>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-offset-5">
+            <h2>View posts</h2>
+            <div>
+                <p></p>
+                <h4>View published posts</h4>
+                <p>
+                    <dd>
+                        @Html.ActionLink("Post", "Index", "Posts")
+                    </dd>
+                </p>
+            </div>
         </div>
     </div>
+</div>

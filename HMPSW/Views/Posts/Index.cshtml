@@ -9,7 +9,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Person_ID)
@@ -66,5 +67,23 @@
     </tr>
 }
 
-</table>
+</table>*@
+    <!-- Project One -->
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-7">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+            </a>
+        </div>
+        <div class="col-md-5">
+            <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            <h4>Author : @Html.DisplayFor(modelItem => item.Person_ID)</h4>
+            <a class="btn btn-primary" @Html.ActionLink("View Project", "Details", new { id = item.ID })></a>
+        </div>
+    </div>
+  <p></p>
+}
 </div>

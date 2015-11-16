@@ -40,13 +40,13 @@
     </div>
     <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
         <div class="container">
-            <footer>
-                <p>&copy; @DateTime.Now.Year - the HomeMakers Team</p>
-            </footer>
+            <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - the HomeMakers Team</p>
+                </footer>
+            </div>
         </div>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
