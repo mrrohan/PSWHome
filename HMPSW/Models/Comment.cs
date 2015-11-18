@@ -39,6 +39,6 @@ namespace HMPSW.Models
             set { comment_text = value; }
         }
 
-        public virtual Person Person { get; set; }
+        public virtual ApplicationUser Person { get; set; }
     }
 }

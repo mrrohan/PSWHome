@@ -7,9 +7,9 @@ using HMPSW.Models;
 
 namespace HMPSW.DAL
 {
-    public class HMInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<HMContext>
+    public class HMInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-        protected override void Seed(HMContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
            
         }

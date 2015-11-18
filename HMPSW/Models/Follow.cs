@@ -32,6 +32,6 @@ namespace HMPSW.Models
             set { follower = value; }
         }
 
-        public virtual Person Person { get; set; }
+        public virtual ApplicationUser Person { get; set; }
     }
 }

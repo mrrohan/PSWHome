@@ -13,7 +13,7 @@ namespace HMPSW.Controllers
 {
     public class CategoriesController : Controller
     {
-        private HMContext db = new HMContext();
+        private DAL.ApplicationDbContext db = new DAL.ApplicationDbContext();
 
         // GET: Categories
         public ActionResult Index()

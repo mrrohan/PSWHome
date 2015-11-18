@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace HMPSW.Models
 {
@@ -64,6 +65,32 @@ namespace HMPSW.Models
 
     public class RegisterViewModel
     {
+        //First Name
+        [Required]
+        [Display(Name = "First Name")]
+        public string Name { get; set; }
+
+        //Last Name
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        //Date of Birth
+        [Display(Name = "Date of Birth")]
+        public DateTime DateOfBirth { get; set; }
+
+        //Sex
+        [Display(Name = "Sex")]
+        public string Sex { get; set; }
+
+        //Contact
+        [Display(Name = "Contact")]
+        public string Contact { get; set; }
+
+        //Address
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

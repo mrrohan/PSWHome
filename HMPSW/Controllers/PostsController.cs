@@ -13,7 +13,7 @@ namespace HMPSW.Controllers
 {
     public class PostsController : Controller
     {
-        private HMContext db = new HMContext();
+        private DAL.ApplicationDbContext db = new DAL.ApplicationDbContext();
 
         // GET: Posts
         public ActionResult Index()

@@ -16,14 +16,6 @@ namespace HMPSW.Models
                 set { id = value; }
             }
 
-            private int person_id;
-
-            public int Person_ID
-            {
-                get { return person_id; }
-                set { person_id = value; }
-            }
-
             private string title;
 
             public string Title
@@ -72,7 +64,9 @@ namespace HMPSW.Models
                 set { rep_minus = value; }
             }
 
-            public virtual Person Person { get; set; }
+            
+
+            public virtual ApplicationUser Person { get; set; }
 
             public virtual ICollection<Comment> Comment { get; set; }
         }
