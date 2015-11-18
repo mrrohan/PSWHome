@@ -94,5 +94,7 @@ namespace HMPSW.Models
 
         public virtual ICollection<Follow> Follow { get; set; }
 
+        public virtual ICollection<File> Files { get; set; }
+
     }
 }
