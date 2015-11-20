@@ -69,5 +69,6 @@ namespace HMPSW.Models
             public virtual ApplicationUser Person { get; set; }
 
             public virtual ICollection<Comment> Comment { get; set; }
+
         }
     }
