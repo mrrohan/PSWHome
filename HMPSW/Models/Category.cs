@@ -7,26 +7,24 @@ namespace HMPSW.Models
 {
     public class Category
     {
-       
-            private int id;
+        private int id;
 
-            public int ID
-            {
-                get { return id; }
-                set { id = value; }
-            }
-
-
-
-            private string description;
-
-            public string Description
-            {
-                get { return description; }
-                set { description = value; }
-            }
-
-            public virtual ICollection<Post> Post { get; set; }
-
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
         }
+
+
+
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public virtual ICollection<Post> Post { get; set; }
     }
+}

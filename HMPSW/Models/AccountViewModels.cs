@@ -66,12 +66,12 @@ namespace HMPSW.Models
     public class RegisterViewModel
     {
         //First Name
-        [Required]
+       // [Required]
         [Display(Name = "First Name")]
         public string Name { get; set; }
 
         //Last Name
-        [Required]
+      //  [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 

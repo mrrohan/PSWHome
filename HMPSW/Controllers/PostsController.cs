@@ -8,12 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using HMPSW.DAL;
 using HMPSW.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HMPSW.Controllers
 {
     public class PostsController : Controller
     {
-        private DAL.ApplicationDbContext db = new DAL.ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
         public ActionResult Index()
@@ -47,10 +48,18 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Person_ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post)
+        public ActionResult Create([Bind(Include = "Title,Description")] Post post)
         {
             if (ModelState.IsValid)
             {
+                //GET ID
+                string currentUserID = User.Identity.GetUserId();
+                //Search in db for username with this id
+                ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserID);
+                post.Person = currentUser;
+
+                post.Date = DateTime.Now;
+
                 db.Post.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +88,7 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Person_ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post)
         {
             if (ModelState.IsValid)
             {

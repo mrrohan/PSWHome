@@ -64,11 +64,12 @@ namespace HMPSW.Models
                 set { rep_minus = value; }
             }
 
-            
 
-            public virtual ApplicationUser Person { get; set; }
 
-            public virtual ICollection<Comment> Comment { get; set; }
+        public virtual ApplicationUser Person { get; set; }
 
-        }
+        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual Category Category { get; set; }
+
+    }
     }

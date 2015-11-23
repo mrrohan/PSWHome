@@ -21,6 +21,7 @@ namespace HMPSW.DAL
         public DbSet<Community> Community { get; set; }
         public DbSet<Follow> Follow { get; set; }
         public DbSet<Post> Post { get; set; }
+        
 
         public static ApplicationDbContext Create()
         {
