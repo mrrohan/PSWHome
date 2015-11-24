@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
@@ -33,7 +34,7 @@ namespace HMPSW.Models
             }
 
             private DateTime date;
-
+            [DataType(DataType.DateTime)]
             public DateTime Date
             {
                 get { return date; }
@@ -67,7 +68,6 @@ namespace HMPSW.Models
 
 
         public virtual ApplicationUser Person { get; set; }
-
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual Category Category { get; set; }
 

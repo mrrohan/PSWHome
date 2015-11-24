@@ -17,9 +17,16 @@ namespace HMPSW.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View(db.Post.ToList());
+            if (id != null)
+            {
+                ViewBag.catid = id;
+                ViewBag.category = db.Category.FirstOrDefault(c => c.ID == id).Description;
+                return View(db.Post.Where(p => p.Category.ID == id).ToList());
+            }
+
+            return RedirectToAction("Index", "Categories");
         }
 
         // GET: Posts/Details/5
@@ -38,8 +45,9 @@ namespace HMPSW.Controllers
         }
 
         // GET: Posts/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            ViewBag.catid = id;
             return View();
         }
 
@@ -48,8 +56,9 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,Description")] Post post)
+        public ActionResult Create([Bind(Include = "Title,Description,Tag")] Post post, int? catid)
         {
+            ViewBag.catid = catid;
             if (ModelState.IsValid)
             {
                 //GET ID
@@ -60,9 +69,12 @@ namespace HMPSW.Controllers
 
                 post.Date = DateTime.Now;
 
+                Category cat = db.Category.FirstOrDefault(c => c.ID == catid);
+                post.Category = cat;
+                
                 db.Post.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index/" + catid);
             }
 
             return View(post);
@@ -80,6 +92,7 @@ namespace HMPSW.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.catid = post.Category.ID;
             return View(post);
         }
 
@@ -88,13 +101,14 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post, int catid)
         {
+            ViewBag.catid = catid;
             if (ModelState.IsValid)
             {
                 db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.SaveChanges(); 
+                return RedirectToAction("Index/" + catid);
             }
             return View(post);
         }

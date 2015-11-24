@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace HMPSW.Models
 {
@@ -13,6 +14,7 @@ namespace HMPSW.Models
     {
         public string Name { get; set; }
         public string LastName { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string Contact { get; set; }

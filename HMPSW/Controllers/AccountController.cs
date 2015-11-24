@@ -151,7 +151,7 @@ namespace HMPSW.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, LastName = model.LastName, Address = model.Address, Contact = model.Contact, DateOfBirth = DateTime.Now, Sex = model.Sex };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, LastName = model.LastName, Address = model.Address, Contact = model.Contact, DateOfBirth = model.DateOfBirth, Sex = model.Sex };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

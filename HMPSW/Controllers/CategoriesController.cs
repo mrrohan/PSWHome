@@ -16,6 +16,7 @@ namespace HMPSW.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Categories
+       
         public ActionResult Index()
         {
             return View(db.Category.ToList());
@@ -37,6 +38,7 @@ namespace HMPSW.Controllers
         }
 
         // GET: Categories/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -45,6 +47,7 @@ namespace HMPSW.Controllers
         // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles ="admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Description")] Category category)

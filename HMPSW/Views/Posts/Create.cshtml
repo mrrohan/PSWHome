@@ -1,5 +1,4 @@
 ﻿@model HMPSW.Models.Post
-
 @{
     ViewBag.Title = "Create";
 }
@@ -14,6 +13,8 @@
     <div class="form-horizontal">
         <h4>Post</h4>
         <hr />
+
+        <input type="hidden" value="@ViewBag.catid" id="catid" name="catid" />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
