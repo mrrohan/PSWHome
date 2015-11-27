@@ -21,10 +21,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                <!-- @Html.DisplayFor(modelItem => item.Description)-->
-                @Html.ActionLink(@item.Description, "Index", new { Controller = "Posts", id = item.ID }, null)
-            </td>
+            <td><!-- link para post controller que envia ID da categoria para a action index-->
+                @Html.ActionLink(@item.Description, "Index", new { Controller = "Posts", id = item.ID })
+            </td><!-- /Post/Index/?Cat_ID-->
             <td>
                 @if (User.IsInRole("admin"))
                 {

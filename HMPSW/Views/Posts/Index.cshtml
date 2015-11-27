@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index for category @ViewBag.category</h2>
+<h2>Index for category @ViewBag.category</h2><!-- nome categoria-->
 
 <p>
     @if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink("Create New", "Create", new { id = ViewBag.catid })
+        @Html.ActionLink("Create New", "Create", new { id = ViewBag.catid }, null)
     }
 </p>
 <table class="table">
@@ -50,8 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Person.Name)
                 @Html.DisplayFor(modelItem => item.Person.LastName)
             </td>
-
             <td>
+
+               <!-- @Html.ActionLink(@item.Description, "Index", new { Controller = "Comments", id = item.ID })-->
                 @if (item.Person.Id == User.Identity.GetUserId() || User.IsInRole("admin"))
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID })@:&nbsp;

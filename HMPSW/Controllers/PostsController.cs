@@ -21,9 +21,9 @@ namespace HMPSW.Controllers
         {
             if (id != null)
             {
-                ViewBag.catid = id;
-                ViewBag.category = db.Category.FirstOrDefault(c => c.ID == id).Description;
-                return View(db.Post.Where(p => p.Category.ID == id).ToList());
+                ViewBag.catid = id; //id categoria para a view /POST/INDEX
+                ViewBag.category = db.Category.FirstOrDefault(c => c.ID == id).Description; //nome da categoria seleccionada
+                return View(db.Post.Where(p => p.Category.ID == id).ToList()); //lista de posts com a categoria do id recebido
             }
 
             return RedirectToAction("Index", "Categories");
@@ -36,7 +36,9 @@ namespace HMPSW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Post post = db.Post.Find(id);
+
             if (post == null)
             {
                 return HttpNotFound();
@@ -74,7 +76,7 @@ namespace HMPSW.Controllers
                 
                 db.Post.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index/" + catid);
+                return RedirectToAction("Index/"+catid);
             }
 
             return View(post);

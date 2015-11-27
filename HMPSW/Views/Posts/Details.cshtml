@@ -44,6 +44,10 @@
 
     </dl>
 </div>
+@foreach (var com in Model.Comment)
+            {
+    @com.Comment_text
+}
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
