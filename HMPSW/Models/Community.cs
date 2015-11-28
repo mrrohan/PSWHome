@@ -24,5 +24,7 @@ namespace HMPSW.Models
         }
 
         public string Forum { get; set; }
+
+        public virtual ICollection<ApplicationUser> Person { get; set; }
     }
 }

@@ -15,21 +15,6 @@ namespace HMPSW.Models
             set { id = value; }
         }
 
-        private int id_person;
-
-        public int ID_Person
-        {
-            get { return id_person; }
-            set { id_person = value; }
-        }
-
-        private int id_Post;
-
-        public int ID_Post
-        {
-            get { return id_Post; }
-            set { id_Post = value; }
-        }
 
         private string comment_text;
 
@@ -39,6 +24,7 @@ namespace HMPSW.Models
             set { comment_text = value; }
         }
 
+        public virtual Post Post { get; set; }
         public virtual ApplicationUser Person { get; set; }
     }
 }

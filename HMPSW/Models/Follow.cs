@@ -7,31 +7,10 @@ namespace HMPSW.Models
 {
     public class Follow
     {
-        private int followed;
-        private int id;
+        public int ID { get; set; }
 
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        public virtual ApplicationUser PersonFollowed { get; set; }
 
-
-        public int Followed
-        {
-            get { return followed; }
-            set { followed = value; }
-        }
-
-
-        private int follower;
-
-        public int Follower
-        {
-            get { return follower; }
-            set { follower = value; }
-        }
-
-        public virtual ApplicationUser Person { get; set; }
+        public virtual ApplicationUser PersonFollower { get; set; }
     }
 }
