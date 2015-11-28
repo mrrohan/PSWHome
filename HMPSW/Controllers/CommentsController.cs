@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HMPSW.DAL;
 using HMPSW.Models;
+using Microsoft.AspNet.Identity;
 
 namespace HMPSW.Controllers
 {
@@ -37,8 +38,9 @@ namespace HMPSW.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            ViewBag.postid = id;
             return View();
         }
 
@@ -47,13 +49,21 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ID_Person,ID_Post,Comment_text")] Comment comment)
+        public ActionResult Create([Bind(Include = "ID,Comment_text")] Comment comment, int? postid)
         {
+            ViewBag.postid = postid;
             if (ModelState.IsValid)
             {
+                string currentUserID = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == currentUserID);
+                comment.Person = currentUser;
+
+                Post post = db.Post.FirstOrDefault(c => c.ID == postid);
+                comment.Post = post;
+
                 db.Comment.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details/"+postid, "Posts" );
             }
 
             return View(comment);

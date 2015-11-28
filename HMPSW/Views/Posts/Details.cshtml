@@ -25,6 +25,13 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt>
+            @Html.DisplayName("Autor do Post")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person.Name)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -42,12 +49,33 @@
             @Html.DisplayFor(model => model.Tag)
         </dd>
 
-    </dl>
-</div>
-@foreach (var com in Model.Comment)
-            {
-    @com.Comment_text
-}
+        
+
+        @if (User.Identity.IsAuthenticated)
+        {
+        <dt>
+            @Html.ActionLink("New Comment", "Create", new { Controller = "Comments", id= Model.ID})
+        </dt>
+        }
+        </dl>
+    <br />
+    <h4>Comentários</h4>
+    <Table class="table col-md-6 col-lg-6 col-sm-6" border="0">
+        <tr >
+            <td>Nome do Autor</td>
+            <td></td>
+        </tr>
+        @foreach (var com in Model.Comment)
+                {
+                    var nome = com.Person.Name;
+            <tr>
+                <td>@Html.DisplayName(nome)</td>
+                <td>@Html.DisplayName(com.Comment_text)</td>
+            </tr>
+        }
+    </Table>  
+    
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
