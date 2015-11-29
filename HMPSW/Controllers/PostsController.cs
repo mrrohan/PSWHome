@@ -103,11 +103,12 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,Date,Tag,Rep_plus,Rep_minus")] Post post, int catid)
+        public ActionResult Edit([Bind(Include = "ID,Title,Description,Tag,Rep_plus,Rep_minus")] Post post, int catid)
         {
             ViewBag.catid = catid;
             if (ModelState.IsValid)
             {
+                post.Date = DateTime.Now;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges(); 
                 return RedirectToAction("Index/" + catid);
@@ -116,7 +117,7 @@ namespace HMPSW.Controllers
         }
 
         // GET: Posts/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? catid)
         {
             if (id == null)
             {

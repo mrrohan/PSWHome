@@ -1,38 +1,44 @@
 ﻿@model IEnumerable<HMPSW.Models.Category>
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
 
-<p>
-    @if (User.IsInRole("admin"))
-    {   @Html.ActionLink("Create New", "Create")}
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+<div class="container" style="width: 75%">
+    <input type="hidden" value="@ViewBag.catid" id="catid" name="catid" />
+    <p>
+        @if (User.IsInRole("admin"))
+        {
+            <h4 class="glyphicon-file text-center">
+                @Html.ActionLink("Create New", "Create")
+            </h4>
+        }
+    </p>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span class="glyphicon glyphicon-bookmark"></span> Categories
+            </h3>
+        </div>
+        <div class="panel-body">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td><!-- link para post controller que envia ID da categoria para a action index-->
-                @Html.ActionLink(@item.Description, "Index", new { Controller = "Posts", id = item.ID })
-            </td><!-- /Post/Index/?Cat_ID-->
-            <td>
-                @if (User.IsInRole("admin"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) 
-                    @Html.ActionLink("Details", "Details", new { id = item.ID })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                }
-            </td>
-        </tr>
-                }
-
-</table>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 text-center">
+                    <div>
+                        <h4>
+                            <!-- link para post controller que envia ID da categoria para a action index-->
+                            @Html.ActionLink(@item.Description, "Index", new { Controller = "Posts", id = item.ID })
+                            <!-- /Post/Index/?Cat_ID-->
+                        </h4>
+                    </div>
+                    <div>
+                        @if (User.IsInRole("admin"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID })@:&nbsp;|
+                            @Html.ActionLink("Details", "Details", new { id = item.ID })@:&nbsp;
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

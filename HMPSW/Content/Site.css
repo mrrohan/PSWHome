@@ -1,4 +1,22 @@
-﻿.carousel {
+﻿.panel-primary {
+  border-color: #33383b;
+}
+
+.panel-primary > .panel-heading {
+  color: #ffffff;
+  background-color: grey;
+  border-color: #33383b;
+}
+
+.panel-primary > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #33383b;
+}
+
+.panel-primary > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #33383b;
+}
+/*Start Carousel*/
+.carousel {
     background-color: #000000;
     color: #000000;
     height: 500px;

@@ -113,6 +113,7 @@ namespace HMPSW.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Category category = db.Category.Find(id);
             db.Category.Remove(category);
             db.SaveChanges();

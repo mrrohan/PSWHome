@@ -1,66 +1,58 @@
 ﻿@model IEnumerable<HMPSW.Models.Post>
+
 @using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index for category @ViewBag.category</h2><!-- nome categoria-->
+<h2 class="text-center">Category: @ViewBag.category</h2>
 
 <p>
     @if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink("Create New", "Create", new { id = ViewBag.catid }, null)
+        <h4 class="glyphicon-file text-center">
+            @Html.ActionLink("Create New Post", "Create", new { id = ViewBag.catid }, null)
+        </h4>
+
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tag)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Person.Name)
-        </th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tag)
-            </td>
-            <td>
+@foreach (var item in Model)
+{
+
+    <div class="container" style="width: 75%">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-bookmark"></span>
+                    @Html.DisplayNameFor(model => model.Title):
+                    @Html.DisplayFor(modelItem => item.Title)
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-8">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                <div class="img-rounded img-responsive pull-right">
+                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzIwMHgyMDAKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTE1MzIwYTRkZiB0ZXh0IHsgZmlsbDpyZ2JhKDI1NSwyNTUsMjU1LC43NSk7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtZmFtaWx5OkhlbHZldGljYSwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTE1MzIwYTRkZiI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiM3NzciLz48Zz48dGV4dCB4PSI3NS41IiB5PSIxMDQuNSI+MjAweDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" class="img-responsive" alt="Responsive image" />
+                </div>
+            </div>
+            <div class="panel-footer">
+                @Html.DisplayNameFor(model => model.Person.Name):
                 @Html.DisplayFor(modelItem => item.Person.Name)
-                @Html.DisplayFor(modelItem => item.Person.LastName)
-            </td>
-            <td>
-
-               <!-- @Html.ActionLink(@item.Description, "Index", new { Controller = "Comments", id = item.ID })-->
-                @if (item.Person.Id == User.Identity.GetUserId() || User.IsInRole("admin"))
+                @Html.DisplayFor(modelItem => item.Person.LastName) |
+                @Html.DisplayNameFor(model => model.Date):
+                @Html.DisplayFor(modelItem => item.Date) |
+                <span class="footer-right">
+                    @if (item.Person.Id == User.Identity.GetUserId() || User.IsInRole("admin"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })@:&nbsp;                    
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                }
-                @Html.ActionLink("Details", "Details", new { id = item.ID })
-            </td>
-        </tr>
-    }
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })@:&nbsp;
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
 
-</table>
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                </span>
+            </div>
+        </div>
+    </div>
+}

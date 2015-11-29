@@ -3,80 +3,81 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container" style="width: 75%">
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                @Html.DisplayName("Autor do Post")
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayName("Autor do Post")
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Person.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Person.Name)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tag)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tag)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tag)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tag)
-        </dd>
 
-        
 
-        @if (User.Identity.IsAuthenticated)
-        {
-        <dt>
-            @Html.ActionLink("New Comment", "Create", new { Controller = "Comments", id= Model.ID})
-        </dt>
-        }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <dt>
+                    @Html.ActionLink("New Comment", "Create", new { Controller = "Comments", id = Model.ID })
+                </dt>
+            }
         </dl>
-    <br />
-    <h4>Comentários</h4>
-    <Table class="table col-md-6 col-lg-6 col-sm-6" border="0">
-        <tr >
-            <td>Nome do Autor</td>
-            <td></td>
-        </tr>
-        @foreach (var com in Model.Comment)
-                {
-                    var nome = com.Person.Name;
+        <br />
+        <h4>Comentários</h4>
+        <Table class="table col-md-6 col-lg-6 col-sm-6" border="0">
             <tr>
-                <td>@Html.DisplayName(nome)</td>
-                <td>@Html.DisplayName(com.Comment_text)</td>
+                <td>Nome do Autor</td>
+                <td></td>
             </tr>
-        }
-    </Table>  
-    
+            @foreach (var com in Model.Comment)
+            {
+                var nome = com.Person.Name;
+                <tr>
+                    <td>@Html.DisplayName(nome)</td>
+                    <td>@Html.DisplayName(com.Comment_text)</td>
+                </tr>
+            }
+        </Table>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
