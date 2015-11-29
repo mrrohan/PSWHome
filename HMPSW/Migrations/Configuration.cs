@@ -34,7 +34,8 @@ namespace HMPSW.Migrations
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser {
+                var user = new ApplicationUser
+                {
                     UserName = "systemadmin@app.com",
                     Name = "Admin",
                     LastName = "System",

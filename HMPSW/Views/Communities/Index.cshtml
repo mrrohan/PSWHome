@@ -3,44 +3,31 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="container">
-    <h2>Index</h2>
+<div class="container" style="width: 75%">
+    <div class="text-center">
+        <h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-   
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+ 
 
-        @foreach (var item in Model)
-        {
+    @foreach (var item in Model)
+    {
 
             <!-- Projects Row -->
-            <div class="row">
-                <div class="col-md-4 portfolio-item">
-                    <a href="#">
-                        <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                    </a>
-                    <h3>
-                        <a @Html.ActionLink("View Project", "Details", new { id = item.ID })>@Html.DisplayFor(modelItem => item.Forum)</a>
-                    </h3>
-                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                </div>
-                </div>
-        }
-                @*<tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Forum)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                                </td>
-                            </tr>
-                        }
 
-                    </table>*@
+        <div class="col-md-4 portfolio-item">
+            <a href="#">
+                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+            </a>
+            <h3 class="text-center">
+                @Html.ActionLink("Community", "Details", new { id = item.ID })
+            </h3>
+            <p class="text-center">@Html.DisplayFor(modelItem => item.Description)</p>
+
+        </div>
+    }
+
 </div>
