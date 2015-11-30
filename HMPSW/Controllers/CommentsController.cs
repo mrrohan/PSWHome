@@ -90,13 +90,13 @@ namespace HMPSW.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ID_Person,ID_Post,Comment_text")] Comment comment)
+        public ActionResult Edit([Bind(Include = "Comment")] Comment comment)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details / "+ids, "Posts/");
             }
             return View(comment);
         }

@@ -71,7 +71,7 @@
                 var nome = com.Person.Name;
                 <tr>
                     <td>@Html.DisplayName(nome)</td>
-                    <td>@Html.DisplayName(com.Comment_text)@if (com.Person.Id == User.Identity.GetUserId()){ @Html.ActionLink("Delete", "Delete", new { Controller= "Comments", id = com.ID }) }</td>
+                    <td>@Html.DisplayName(com.Comment_text) | @if (com.Person.Id == User.Identity.GetUserId()) { @Html.ActionLink("Delete", "Delete", new { Controller= "Comments", id = com.ID })  @Html.ActionLink("Edit", "Edit", new { Controller = "Comments", id = com.ID }) }</td>
                 </tr>
             }
         </Table>
