@@ -115,6 +115,22 @@ namespace HMPSW.Controllers
         {
 
             Category category = db.Category.Find(id);
+            var post = category.Post;
+            
+             
+            foreach (var item in post.ToList())
+            {
+                foreach (var item2 in item.Comment.ToList())
+                {
+                    db.Comment.Remove(item2);
+                    db.SaveChanges();
+                }
+                db.Post.Remove(item);
+                db.SaveChanges();
+            }
+
+            
+            
             db.Category.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");

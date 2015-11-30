@@ -34,7 +34,8 @@
                         @if (User.IsInRole("admin"))
                         {
                             @Html.ActionLink("Edit", "Edit", new { id = item.ID })@:&nbsp;|
-                            @Html.ActionLink("Details", "Details", new { id = item.ID })@:&nbsp;
+                            @Html.ActionLink("Details", "Details", new { id = item.ID })@:&nbsp;|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                         }
                     </div>
                 </div>

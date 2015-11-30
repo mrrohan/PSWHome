@@ -1,7 +1,8 @@
 ﻿@model HMPSW.Models.Post
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Details";
+    ViewBag.postidcom = Model.ID;
 }
 <div class="container" style="width: 75%">
     <h2>Details</h2>
@@ -70,14 +71,21 @@
                 var nome = com.Person.Name;
                 <tr>
                     <td>@Html.DisplayName(nome)</td>
-                    <td>@Html.DisplayName(com.Comment_text)</td>
+                    <td>@Html.DisplayName(com.Comment_text)@if (com.Person.Id == User.Identity.GetUserId()){ @Html.ActionLink("Delete", "Delete", new { Controller= "Comments", id = com.ID }) }</td>
                 </tr>
             }
         </Table>
 
 
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @if (Model.Person.Id == User.Identity.GetUserId() || User.IsInRole("admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID })@:&nbsp;
+                @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+
+            }
+            |
             @Html.ActionLink("Back to List", "Index")
         </p>
     </div>
+</div>

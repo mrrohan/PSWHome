@@ -135,8 +135,13 @@ namespace HMPSW.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {
+        {   
             Post post = db.Post.Find(id);
+            var comment = post.Comment;
+            foreach(var item in comment.ToList())
+            {
+                db.Comment.Remove(item);
+            }
             db.Post.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -12,19 +12,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ID_Person)
+            @Html.DisplayNameFor(model => model.Person.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ID_Person)
+            @Html.DisplayFor(model => model.Person.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ID_Post)
+            @Html.DisplayNameFor(model => model.Post)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ID_Post)
+            @Html.DisplayFor(model => model.Person.Id)
         </dd>
 
         <dt>
@@ -41,7 +41,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            
+           <input type="submit" value="Delete" class="btn btn-default" />
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

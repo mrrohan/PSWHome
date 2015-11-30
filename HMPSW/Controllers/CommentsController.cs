@@ -16,6 +16,7 @@ namespace HMPSW.Controllers
     {
         private DAL.ApplicationDbContext db = new DAL.ApplicationDbContext();
 
+        private int? ids;
         // GET: Comments
         public ActionResult Index()
         {
@@ -101,8 +102,9 @@ namespace HMPSW.Controllers
         }
 
         // GET: Comments/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int? postid)
         {
+            ids = postid;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -120,10 +122,12 @@ namespace HMPSW.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            
             Comment comment = db.Comment.Find(id);
+            ids = comment.Post.ID;
             db.Comment.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details/"+ids, "Posts/");
         }
 
         protected override void Dispose(bool disposing)

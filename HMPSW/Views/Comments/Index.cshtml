@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Person.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ID_Post)
+            @Html.DisplayNameFor(model => model.Person.Id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Comment_text)
@@ -26,10 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Person)
+            @Html.DisplayFor(modelItem => item.Person.Id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ID_Post)
+            @Html.DisplayFor(modelItem => item.Person.Id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comment_text)
