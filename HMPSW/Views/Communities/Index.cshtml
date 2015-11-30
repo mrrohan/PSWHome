@@ -15,19 +15,26 @@
 
     @foreach (var item in Model)
     {
-
+        
             <!-- Projects Row -->
-
         <div class="col-md-4 portfolio-item">
             <a href="#">
                 <img class="img-responsive" src="http://placehold.it/700x400" alt="">
             </a>
             <h3 class="text-center">
-                @Html.ActionLink("Community", "Details", new { id = item.ID })
+                @Html.ActionLink(@item.Description, "Details", new { Controller = "Communities", id = item.ID })
             </h3>
             <p class="text-center">@Html.DisplayFor(modelItem => item.Description)</p>
-
-        </div>
-    }
+            @if (User.IsInRole("admin"))
+            {
+                <div class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })|
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </div>
+            }
+               
+        </div>      
+}
 
 </div>
